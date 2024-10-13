@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+html,body{
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+.dashed-circle {
+  position: relative;
+  padding-left: 1.5rem;
+  /* Adjust space for the circle */
+}
+
+.dashed-circle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border: 2px dashed #d9e63e;
+  /* Adjust the color */
+  border-radius: 50%;
+}
