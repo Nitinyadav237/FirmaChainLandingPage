@@ -3,6 +3,30 @@ import { Logo } from "../assets/images";
 import { navLinks, Feature } from "./../../constant";
 import { Button } from "../components/Button";
 import { useState } from "react";
+import { AnimatePresence, motion } from 'framer-motion';
+
+ const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1, // Delay between each child element's animation
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { x: -100, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.5 } },
+  };
+
+  const logoVariants = {
+    hidden: { opacity: 0, scale: 0 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
+  };
+
+ 
+
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -10,7 +34,9 @@ const Navbar = () => {
 
   const renderNavLinks = (isMobile = false) => {
     return navLinks.map((elem) => (
-      <li key={elem.label} className="flex items-center justify-center">
+      <motion.li
+        variants={itemVariants}
+        key={elem.label} className="flex items-center justify-center">
         <a
           className={`flex items-center gap-1 font-NotoSans font-thin text-textGray ${isMobile ? "text-xl" : "text-lg"}`}
           href={elem.href}
@@ -25,7 +51,7 @@ const Navbar = () => {
             </span>
           )}
         </a>
-      </li>
+      </motion.li>
     ));
   };
 
@@ -33,24 +59,43 @@ const Navbar = () => {
     <>
       <div className="flex items-center justify-between bg-primaryBGblack px-4 pt-20 font-NotoSans text-textWhite md:px-8 lg:px-36">
         {/* LOGO */}
-        <div className="flex items-center justify-center">
+        <motion.div
+           variants={logoVariants}
+            initial="hidden"
+            animate="visible"
+
+          className="flex items-center justify-center">
           <img className="h-20 w-20 object-right" src={Logo} alt="Logo" />
           <h1 className="hidden text-2xl font-bold uppercase md:block">
             Firmachain
           </h1>
-        </div>
+        </motion.div>
 
         {/* Menu */}
-        <ul className="hidden gap-10 lg:flex">{renderNavLinks()}</ul>
+        <motion.ul
+           variants={containerVariants}
+            initial="hidden"
+          animate="visible"
+          
+          className="hidden gap-10 lg:flex">{renderNavLinks()}</motion.ul>
 
         {/* Button and Language Selection */}
-        <div className="flex items-center gap-4">
-          <div className="hidden items-center gap-2 lg:flex">
+        <motion.div
+           variants={containerVariants}
+            initial="hidden"
+          animate="visible"
+
+          className="flex items-center gap-4">
+          <motion.div
+            variants={itemVariants}
+            className="hidden items-center gap-2 lg:flex">
             <img className="h-10 w-10" src={world} alt="world_icon" />
             <span>EN</span>
-          </div>
+          </motion.div>
           <Button label="White Paper" borderRadius="rounded-full" width="" />
-          <div className="cursor-pointer lg:hidden">
+          <motion.div
+            variants={itemVariants}
+            className="cursor-pointer lg:hidden">
             <img
               src={hamburger}
               alt="hamburger icon"
@@ -58,13 +103,19 @@ const Navbar = () => {
               height={25}
               onClick={() => setOpen(!open)}
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Hamburger Menu */}
+       <AnimatePresence mode="wait">
       {open && (
-        <div className="absolute right-4 h-[25rem] w-[20rem] rounded-3xl bg-secondaryBGgray/85 px-10 py-10 backdrop-blur-2xl">
+        <motion.div
+           initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, y: -100 }}
+            transition={{ duration: 0.3 }}
+          className="absolute right-4 h-[25rem] w-[20rem] rounded-3xl bg-secondaryBGgray/85 px-10 py-10 backdrop-blur-2xl">
           <div
             className="absolute right-4 top-4 flex h-8 w-8 cursor-pointer items-center justify-center"
             onClick={() => setOpen(!open)}
@@ -75,9 +126,9 @@ const Navbar = () => {
             <h1 className="border-b-2 text-xl text-textWhite">Menu</h1>
             <ul className="flex flex-col gap-10">{renderNavLinks(true)}</ul>
           </div>
-        </div>
+        </motion.div>
       )}
-
+</AnimatePresence>
       {/* Features Dropdown */}
       {openFeat && (
         <div className="group absolute left-1/2 h-[14rem] w-[12rem] -translate-x-1/2 rounded-3xl bg-secondaryBGgray/85 px-10 py-10">

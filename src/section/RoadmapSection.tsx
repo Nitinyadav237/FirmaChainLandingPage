@@ -1,6 +1,8 @@
+import { containerVariants, diamondVariants, itemVariants } from "../../Animation";
 import { roadmapData } from "../../constant";
 import { SmokyBg } from "../assets/images";
 import { HeadingDiv } from "./../components/Button";
+import { motion } from 'framer-motion';
 
 const RoadmapSection = () => {
   return (
@@ -15,7 +17,11 @@ const RoadmapSection = () => {
       </div>
 
       {/* Heading */}
-      <div className="z-10 flex flex-col items-center space-y-5">
+      <motion.div  variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        className="z-10 flex flex-col items-center space-y-5">
         <HeadingDiv
           label="RoadMap"
           width="w-[20rem]"
@@ -23,13 +29,19 @@ const RoadmapSection = () => {
           text="text-3xl"
           font="font-bold"
         />
-        <h1 className="text-3xl font-medium text-white">
+        <motion.h1 variants={itemVariants} className="text-3xl font-medium text-white">
           How we are building the future of E-contract
-        </h1>
-      </div>
+        </motion.h1>
+      </motion.div>
 
       {/* Roadmap */}
-      <div className="relative z-10 mt-60 flex flex-col items-center justify-center gap-20">
+      <motion.div
+         variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        
+        className="relative z-10 mt-60 flex flex-col items-center justify-center gap-20">
         {/* Vertical Line */}
         <div className="absolute -top-36 z-0 h-[83rem] w-2 rounded-full bg-gradient-to-b from-primaryBGblack to-buttonYellow md:-left-28 lg:-left-1"></div>
 
@@ -37,27 +49,27 @@ const RoadmapSection = () => {
           {roadmapData.map((elem, index) => (
             <div key={elem.heading} className="relative">
               {/* Quarter Info */}
-              <div
+              <motion.div variants={itemVariants}
                 className="w-30 absolute -mt-10 px-2 py-2 text-3xl font-semibold tracking-wide text-buttonYellow md:-left-[22rem] lg:-left-[19rem]"
                 style={{ top: `${index * 350 + 55}px` }}
               >
                 {elem.quarter}
-              </div>
+              </motion.div>
 
               {/* Center Diamond (Marker) */}
-              <div
+              <motion.div variants={itemVariants}
                 className="absolute z-20 mt-3 flex rotate-45 items-center justify-center md:-left-[8.6rem] lg:-left-[2rem]"
                 style={{ top: `${index * 350}px` }}
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-lg border-2 border-dashed border-buttonYellow">
+                <motion.div variants={diamondVariants}  className="flex h-16 w-16 items-center justify-center rounded-lg border-2 border-dashed border-buttonYellow">
                   <div className="flex h-14 w-14 items-center justify-center rounded-lg border-2 border-buttonYellow">
                     <div className="h-12 w-12 rounded-lg bg-buttonYellow"></div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
               {/* Content Info */}
-              <div
+              <motion.div variants={itemVariants}
                 className="absolute -mt-10 space-y-3 rounded-2xl border-2 border-buttonYellow/40 px-6 py-6 text-textGray md:-right-[22rem] md:w-[25rem] lg:-right-[42rem] lg:w-[32rem]"
                 style={{ top: `${index * 350 + 40}px` }}
               >
@@ -69,11 +81,11 @@ const RoadmapSection = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

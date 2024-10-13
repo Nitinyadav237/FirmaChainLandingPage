@@ -1,4 +1,5 @@
 import { rightArrowBlack, rightArrowWhite } from "../assets/icons";
+import { motion } from 'framer-motion';
 
 interface ButtonProps {
   label: string;
@@ -8,11 +9,18 @@ interface ButtonProps {
 
 export const Button = ({ label, width, borderRadius }: ButtonProps) => {
   return (
-    <div
+    <motion.div
+       initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
       className={`${width} flex h-16 items-center justify-center px-4 py-4 font-NotoSans text-base font-semibold md:px-4 md:text-lg lg:px-8 lg:text-xl ${borderRadius} cursor-pointer bg-buttonYellow`}
     >
       <h1 className="text-center uppercase text-primaryBGblack">{label}</h1>
-    </div>
+    </motion.div>
   );
 };
 
@@ -36,7 +44,14 @@ export const SecondaryButton = ({
   arrow,
 }: SecondaryButtonProps) => {
   return (
-    <button
+    <motion.button
+       initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
       className={`border-2 ${border} ${width} flex cursor-pointer items-center justify-center gap-2 rounded-full ${padding} bg-transparent py-3 ${textColor} ${font}`}
     >
       {label}
@@ -45,7 +60,7 @@ export const SecondaryButton = ({
         src={arrow === "white" ? rightArrowWhite : rightArrowBlack}
         alt={arrow}
       />
-    </button>
+    </motion.button>
   );
 };
 
@@ -65,12 +80,19 @@ export const HeadingDiv = ({
   font,
 }: HeadingDivProps) => {
   return (
-    <div
+    <motion.div
+       initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
       className={`${width} ${height} flex items-center justify-center rounded-custom-shape border-4 border-buttonYellow bg-buttonYellow px-4 py-2 uppercase`}
     >
       <h1 className={`text-primaryBGblack ${text} ${font} tracking-wide`}>
         {label}
       </h1>
-    </div>
+    </motion.div>
   );
 };

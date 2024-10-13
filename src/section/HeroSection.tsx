@@ -2,21 +2,69 @@ import { HeroInfo } from "../../constant";
 import { HeroImg } from "../assets/images";
 import { Button, HeadingDiv, SecondaryButton } from "../components/Button";
 import Navbar from "./../components/Navbar";
+import { motion } from "framer-motion";
+
 const HeroSection = () => {
+   const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // Time between each child animation
+      },
+    },
+  };
+
+  const textVariants = {
+    hidden: { x: -100, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeInOut" }, // Added ease
+    },
+  };
+
+  const buttonVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeInOut" }, // Added ease
+    },
+  };
+
+  const imageVariants = {
+    hidden: { x: 200, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 1, ease: "easeInOut" }, // Added ease
+    },
+  };
+
   return (
     <>
       <div className="h-[220vh] bg-primaryBGblack text-textWhite md:h-[180vh] lg:h-[160vh]">
         <Navbar />
         {/* hero */}
-        <div className="h-[90vh] flex-col px-4 font-NotoSans md:px-8 lg:flex lg:flex-row lg:px-36">
+        <motion.div
+           variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+          className="h-[90vh] flex-col px-4 font-NotoSans md:px-8 lg:flex lg:flex-row lg:px-36">
+          
           <div className="uppercase lg:w-2/3">
             <div className="mt-20">
-              <h1 className="text-2xl leading-3 tracking-wider md:text-6xl lg:text-7xl">
+              <motion.h1
+                variants={textVariants}
+                className="text-2xl leading-3 tracking-wider md:text-6xl lg:text-7xl">
                 A blockchain
-              </h1>
-              <span className="mt-6 inline-block text-4xl font-bold tracking-wider md:text-7xl">
+              </motion.h1>
+              <motion.span
+                variants={textVariants}
+                className="mt-6 inline-block text-4xl font-bold tracking-wider md:text-7xl">
                 based e-contract
-              </span>
+              </motion.span>
             </div>
             <div className="mt-10 space-y-5 md:mt-16">
               <HeadingDiv
@@ -27,14 +75,18 @@ const HeroSection = () => {
                 font="font-bold"
               />
 
-              <p className="text-sm font-medium text-textGray md:text-base lg:w-2/3">
+              <motion.p
+                variants={textVariants}
+                className="text-sm font-medium text-textGray md:text-base lg:w-2/3">
                 unlocking new limits of electronic contracts with blockchain
                 technology, firmachain seeks to
-              </p>
+              </motion.p>
             </div>
 
             {/* button */}
-            <div className="mt-10 flex flex-wrap gap-6 md:gap-8">
+            <motion.div
+              variants={buttonVariants}
+              className="mt-10 flex flex-wrap gap-6 md:gap-8">
               <Button
                 label="Get started"
                 borderRadius="rounded-full"
@@ -47,14 +99,18 @@ const HeroSection = () => {
                 width="md:w-[20rem] w-[14rem] "
                 font="text-xl"
               />
-            </div>
+            </motion.div>
           </div>
 
-          <div className="mt-6 flex w-full items-center px-2 py-2 lg:mt-1 lg:w-1/3">
+          <motion.div
+            variants={imageVariants}
+            className="mt-6 flex w-full items-center px-2 py-2 lg:mt-1 lg:w-1/3">
             <img src={HeroImg} alt="HeroImg" />
-          </div>
-        </div>
-        <div className="justify mt-72 flex items-center px-2 md:mt-96 md:px-4 lg:mt-10 lg:justify-center lg:px-20">
+          </motion.div>
+        </motion.div>
+        <motion.div
+          variants={textVariants}
+          className="justify mt-72 flex items-center px-2 md:mt-96 md:px-4 lg:mt-10 lg:justify-center lg:px-20">
           <div className="flex h-56 w-full flex-wrap items-center justify-center gap-2 md:py-4 lg:h-44 lg:w-[70rem] lg:flex-nowrap">
             {HeroInfo.map((elem) => (
               <div key={elem.id} className="flex w-[15rem] lg:w-[20rem]">
@@ -76,7 +132,7 @@ const HeroSection = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </>
   );

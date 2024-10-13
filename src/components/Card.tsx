@@ -1,9 +1,18 @@
+import { containerVariants, itemVariants } from "../../Animation";
 import { TeamInfo } from "../../constant";
+import { motion } from 'framer-motion';
 
 const Card = () => {
   return (
-    <div className="mt-20">
-      <div className="flex flex-wrap items-center justify-center gap-8 lg:flex-nowrap">
+    <motion.div
+       variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      className="mt-20">
+      <motion.div
+        variants={itemVariants}
+        className="flex flex-wrap items-center justify-center gap-8 lg:flex-nowrap">
         {TeamInfo.map(
           ({
             id,
@@ -58,8 +67,8 @@ const Card = () => {
             </div>
           ),
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
