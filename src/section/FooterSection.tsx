@@ -3,7 +3,7 @@ import { Button } from "../components/Button";
 
 const FooterSection = () => {
   return (
-    <div className="relative h-[85vh] bg-primaryBGblack px-2 font-NotoSans md:h-[52vh] md:px-4  lg:py-36">
+    <div className="relative h-[85vh] bg-primaryBGblack px-2 font-NotoSans md:h-[52vh] md:px-4 lg:h-[60vh]">
       {/* Part 1 */}
       <div className="absolute -top-52 mt-20 flex h-[20rem] w-[22rem] flex-col items-center justify-center rounded-3xl border-2 bg-buttonYellow md:-top-56 md:w-[45rem] lg:-top-2/3 lg:w-[70rem] lg:translate-x-[12rem] lg:px-4 lg:py-4">
         <div className="mt-10 space-y-2 text-center md:space-y-4 lg:space-y-8">

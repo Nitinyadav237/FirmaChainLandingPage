@@ -4,9 +4,9 @@ import { HeadingDiv, SecondaryButton } from "../components/Button";
 
 const FeatSection = () => {
   const renderFeatureItems = () => {
-    return FeatureInfo.map((elem) => (
+    return FeatureInfo.map((elem,i) => (
       <div
-        key={elem.id}
+        key={i}
         className="lspace-y-4 lrounded-2xl lg:mt- md:px- md:w-[28rem cursor-pointer px-4 py-4 hover:border-white hover:bg-white hover:shadow-lg hover:shadow-black/20 md:h-[10rem]"
       >
         <h1 className="text-lg font-bold">{elem.heading}</h1>

@@ -16,7 +16,7 @@ const TeamSection = () => {
   };
 
   return (
-    <div className="min-h-[220vh] bg-textWhite px-4 pt-20 md:px-8 lg:h-[200vh] lg:px-44 lg:py-20">
+    <div className="h-[330vh] md:h-[230vh] bg-textWhite px-4 pt-20 md:px-8 lg:h-[200vh] lg:px-44 lg:py-20">
       {/* Team Section */}
       <div className="z-10 flex flex-col items-center space-y-5">
         <HeadingDiv
