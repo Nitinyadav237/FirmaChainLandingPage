@@ -34,7 +34,7 @@ const TeamSection = () => {
   };
 
   return (
-    <div className="h-[330vh] md:h-[230vh] bg-textWhite px-4 pt-20 md:px-8 lg:h-[200vh] lg:px-44 lg:py-20">
+    <div className="min-h-max bg-textWhite px-4 pt-20 md:px-8 lg:px-44 lg:py-20">
       {/* Team Section */}
       <motion.div
         variants={containerVariants}
@@ -50,6 +50,7 @@ const TeamSection = () => {
           text="text-3xl"
           font="font-bold"
         />
+
         <motion.p
           variants={itemVariants}
           className="text-center text-base font-medium text-secondaryBGgray lg:w-3/5"
@@ -90,7 +91,7 @@ const TeamSection = () => {
         </motion.div>
 
         {/* Partners Marquee */}
-        <div className="mt-2 overflow-hidden md:mt-4 lg:mt-20">
+        <div className="mt-2 overflow-hidden pb-48 pt-20 md:mt-4 lg:mt-20">
           <motion.div
             className="flex items-center gap-8 whitespace-nowrap"
             variants={marqueeVariants}

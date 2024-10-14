@@ -1,5 +1,5 @@
 import { rightArrowBlack, rightArrowWhite } from "../assets/icons";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 interface ButtonProps {
   label: string;
@@ -10,7 +10,7 @@ interface ButtonProps {
 export const Button = ({ label, width, borderRadius }: ButtonProps) => {
   return (
     <motion.div
-       initial={{ opacity: 0, scale: 0.5 }}
+      initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{
         duration: 0.8,
@@ -45,7 +45,7 @@ export const SecondaryButton = ({
 }: SecondaryButtonProps) => {
   return (
     <motion.button
-       initial={{ opacity: 0, scale: 0.5 }}
+      initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{
         duration: 0.8,
@@ -81,7 +81,7 @@ export const HeadingDiv = ({
 }: HeadingDivProps) => {
   return (
     <motion.div
-       initial={{ opacity: 0, scale: 0.5 }}
+      initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{
         duration: 0.8,

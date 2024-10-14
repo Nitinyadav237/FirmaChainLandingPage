@@ -5,7 +5,7 @@ import Navbar from "./../components/Navbar";
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
-   const containerVariants = {
+  const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -44,25 +44,27 @@ const HeroSection = () => {
 
   return (
     <>
-      <div className="h-[220vh] bg-primaryBGblack text-textWhite md:h-[180vh] lg:h-[160vh]">
+      <div className="relative max-h-max bg-primaryBGblack pb-[48rem] text-textWhite lg:pb-[35rem]">
         <Navbar />
         {/* hero */}
         <motion.div
-           variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-          className="h-[90vh] flex-col px-4 font-NotoSans md:px-8 lg:flex lg:flex-row lg:px-36">
-          
-          <div className="uppercase lg:w-2/3">
-            <div className="mt-20">
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="h-[90vh] flex-col px-4 font-NotoSans md:px-8 lg:flex lg:flex-row lg:px-36"
+        >
+          <div className="py-20 uppercase lg:w-3/4">
+            <div className="mt-2">
               <motion.h1
                 variants={textVariants}
-                className="text-2xl leading-3 tracking-wider md:text-6xl lg:text-7xl">
+                className="text-2xl leading-3 tracking-wider md:text-6xl lg:text-7xl"
+              >
                 A blockchain
               </motion.h1>
               <motion.span
                 variants={textVariants}
-                className="mt-6 inline-block text-4xl font-bold tracking-wider md:text-7xl">
+                className="mt-6 inline-block text-4xl font-bold tracking-wider md:text-7xl"
+              >
                 based e-contract
               </motion.span>
             </div>
@@ -77,7 +79,8 @@ const HeroSection = () => {
 
               <motion.p
                 variants={textVariants}
-                className="text-sm font-medium text-textGray md:text-base lg:w-2/3">
+                className="text-sm font-medium text-textGray md:text-base lg:w-2/3"
+              >
                 unlocking new limits of electronic contracts with blockchain
                 technology, firmachain seeks to
               </motion.p>
@@ -86,7 +89,8 @@ const HeroSection = () => {
             {/* button */}
             <motion.div
               variants={buttonVariants}
-              className="mt-10 flex flex-wrap gap-6 md:gap-8">
+              className="mt-10 flex flex-wrap gap-6 md:gap-8"
+            >
               <Button
                 label="Get started"
                 borderRadius="rounded-full"
@@ -104,14 +108,21 @@ const HeroSection = () => {
 
           <motion.div
             variants={imageVariants}
-            className="mt-6 flex w-full items-center px-2 py-2 lg:mt-1 lg:w-1/3">
-            <img src={HeroImg} alt="HeroImg" />
+            className="ml-2 mt-2 flex items-center justify-center py-2 lg:mt-20"
+          >
+            <img
+              src={HeroImg}
+              alt="HeroImg"
+              className="h-full w-full object-cover"
+            />
           </motion.div>
         </motion.div>
+
         <motion.div
           variants={textVariants}
-          className="justify mt-72 flex items-center px-2 md:mt-96 md:px-4 lg:mt-10 lg:justify-center lg:px-20">
-          <div className="flex h-56 w-full flex-wrap items-center justify-center gap-2 md:py-4 lg:h-44 lg:w-[70rem] lg:flex-nowrap">
+          className="absolute bottom-4 flex items-center justify-center px-2 lg:bottom-10 lg:justify-center lg:px-24"
+        >
+          <div className="flex w-full flex-wrap items-center justify-center gap-2 md:py-4 lg:h-44 lg:w-[70rem] lg:flex-nowrap">
             {HeroInfo.map((elem) => (
               <div key={elem.id} className="flex w-[15rem] lg:w-[20rem]">
                 <div
